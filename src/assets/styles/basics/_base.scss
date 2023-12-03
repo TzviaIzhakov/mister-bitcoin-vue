@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    font-family: Ubuntu-Regular,sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    font-weight: normal;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+
+    * {
+        pointer-events: none;
+    }
+}
+
+input {
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 4px;
+    color: #3a3939;
+    font-size: 14px;
+    margin: 0;
+    padding: 9px 16px 11px;
+    width: 375px;
+    
+}
+
+.btn{
+    @include btn;
+
+    &-regular {
+        @include btn($type: regular);
+    }
+}
+

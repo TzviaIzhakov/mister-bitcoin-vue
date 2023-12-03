@@ -1,0 +1,24 @@
+.container {
+    padding-inline: 10vw;
+}
+
+// GRIDS
+.simple-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+}
+
+.main-layout{
+    display: grid;
+    grid-template-columns: minmax(12px, 1fr) minmax(auto, 1500px) minmax(12px, 1fr);
+    >*.full {
+        grid-column: 1 / -1;
+    }
+    
+    >*:not(.full) {
+        grid-column: 2;
+    }
+}
+
+
