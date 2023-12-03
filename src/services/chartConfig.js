@@ -7,7 +7,29 @@ export const data = {
       fill: false,
       borderColor: '#f87979',
       backgroundColor: '#f87979',
-      data: await bitcoinService.getMarketPriceHistory()
+      // await bitcoinService.getMarketPriceHistory()
+      data:  [
+        {
+          x: -2,
+          y: 4
+        },
+        {
+          x: -1,
+          y: 1
+        },
+        {
+          x: 0,
+          y: 0
+        },
+        {
+          x: 1,
+          y: 1
+        },
+        {
+          x: 2,
+          y: 4
+        }
+      ]
     },
   
   ]
