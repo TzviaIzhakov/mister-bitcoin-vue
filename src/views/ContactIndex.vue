@@ -1,8 +1,9 @@
 <template>
       <section class="contact-index">
-        <ContactFilter @filter="setFilterBy"/>
-            <RouterLink :to="`contact/edit/`"><button>Add</button>
-            </RouterLink>
+        <div class="flex filter-edit-container">
+            <ContactFilter @filter="setFilterBy"/>
+            <RouterLink :to="`contact/edit/`"><button class="btn-regular">Add</button></RouterLink>
+        </div>
         <ContactList v-if="contacts" @remove="removeContact"  :contacts="filteredContacts" />
         <img v-else src="../assets/img/puff.svg" alt="" class="loader">
     </section>
@@ -66,6 +67,13 @@
 </script>
 
 <style lang="scss">
+.contact-index{
+    .filter-edit-container{
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+    }
+}
     img.loader {
         display: block;
         width: 200px;

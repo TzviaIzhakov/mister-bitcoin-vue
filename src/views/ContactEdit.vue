@@ -1,14 +1,16 @@
 <template>
-	<section v-if="contact" class="contact-edit">
-		<h2>{{ displayTitle }}</h2>
-
-		<form class="edit-form" @submit.prevent="onSave">
-			<input type="text" v-model="contact.name" />
-			<input type="tel" v-model="contact.phone" />
-			<input type="email" v-model="contact.email" />
+	<section v-if="contact" class="contact-edit-container">
+		<h2>{{ displayTitle }} Your Deatils</h2>
+		<form class="contact-edit" @submit.prevent="onSave">
+			<label for="name">Name</label>
+			<input type="text" id="name" v-model="contact.name"/>
+			<label for="phone">Phone</label>
+			<input type="tel" v-model="contact.phone" id="phone"/>
+			<label for="email">Email</label>
+			<input id="email" type="email" v-model="contact.email" />
 			<div class="actions">
-				<button>Save</button>
-				<button type="button" @click="back">Back</button>
+				<button class="btn-regular">Submit</button>
+				<button type="button" class="back" @click="back"><img src="../assets/img/back.png" alt=""></button>
 			</div>
 		</form>
 	</section>
@@ -75,22 +77,44 @@ export default {
 </script>
 
 <style lang="scss">
-.contact-edit {
-	.edit-form {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 15px;
-
-		> input {
-			min-width: 300px;
-			border-radius: 16px;
-			height: 1.5rem;
-			padding: 14px 24px;
-		}
-		button {
-			margin-inline-end: 15px;
-		}
+.contact-edit-container{
+    display: flex;
+	flex-direction: column;
+    place-items: center;
+	h2{
+    font-size: 30px;
+    font-weight: 700;
+    color: orange;
+    margin-bottom: 45px;
 	}
+    .contact-edit{
+        display: flex;
+		position: relative;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        box-shadow: 0 4px 12px 0 rgba(35, 35, 35, 0.16);
+        overflow: hidden;
+        padding: 50px;
+        label{
+            color: #fba342;
+            font-weight: 500;
+        }
+		.actions{
+			.back{
+				position: absolute;
+				left: 10px;
+    			top: 10px;
+				background: none;
+				border-style: none;
+				width: 3em;
+				height: 3em;
+			}
+		}
+      
+        
+    }
 }
+	
+
 </style>
