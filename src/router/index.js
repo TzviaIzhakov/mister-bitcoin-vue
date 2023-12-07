@@ -3,7 +3,8 @@ import Home from '../views/Home.vue'
 import ContactIndex from '../views/ContactIndex.vue'
 import ContactDetail from '../views/ContactDetail.vue'
 import ContactEdit from '../views/ContactEdit.vue'
-import Chart from '../views/Chart.vue'
+import Statistisc from '../views/Statistisc.vue'
+import LoginSignUp from '../views/LoginSignUp.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,8 +36,13 @@ const router = createRouter({
     },
     {
       path: '/chart',
-      name: 'chart',
-      component: Chart
+      name: 'statistisc',
+      component: Statistisc
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: LoginSignUp
     }
   ]
 })
