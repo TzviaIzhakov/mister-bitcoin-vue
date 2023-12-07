@@ -73,6 +73,11 @@
         justify-content: center;
         gap: 1em;
     }
+    @media screen and (max-width: 600px) {
+        .filter-edit-container{
+            flex-direction: column;
+        }
+    }
 }
     img.loader {
         display: block;
