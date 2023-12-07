@@ -19,6 +19,9 @@
     >*:not(.full) {
         grid-column: 2;
     }
+    @include for-mobile-layout {
+        grid-template-columns: minmax(15px, 1fr) minmax(auto, $mobile-breakpoint) minmax(15px, 1fr);
+    }
 }
 
 
