@@ -1,10 +1,13 @@
 import axios from 'axios';
+import {dbService} from '../services/db.service'
 export const bitcoinService = {
     getRate,
     getMarketPriceHistory,
-	  getAvgBlockSize,
+	  getTransactionsHistory
 }
 const ENTITY = 'coin'
+const PRICE_HISTORY_KEY = 'priceHistory'
+const TRANSACTIONS_HISTORY_KEY = 'transactionHistory'
 const gRates = []
 function _getItem(coins){
     const rates = JSON.parse(localStorage.getItem(ENTITY) || 'null')
@@ -42,15 +45,33 @@ async function fetchData(coins) {
   }
 
  async function getMarketPriceHistory() {
+  let priceHistory = await dbService.query(PRICE_HISTORY_KEY)
+  if (!priceHistory || !priceHistory.length) {
     try {
       const marketPriceHistory = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=1months&format=json&cors=true`)
+
+      await dbService.insert(PRICE_HISTORY_KEY, marketPriceHistory.data.values)
       return marketPriceHistory.data.values
-    } catch (error) {
+    } 
+    catch (error) {
       throw error
-      console.error(error);
     }
+  }
+  else{
+    return priceHistory
+  }
 }
 
-function getAvgBlockSize(params) {
-    
+async function getTransactionsHistory() {
+	let transactionsHistory = await dbService.query(TRANSACTIONS_HISTORY_KEY)
+	
+    if (!transactionsHistory || !transactionsHistory.length) {
+		const url = 'https://api.blockchain.info/charts/trade-volume?timespan=1months&format=json&cors=true'
+		const { data } = await axios.get(url)
+		await dbService.insert(TRANSACTIONS_HISTORY_KEY, data.values)
+		transactionsHistory = data.values
+	}
+  else{
+    return transactionsHistory
+  }
 }
