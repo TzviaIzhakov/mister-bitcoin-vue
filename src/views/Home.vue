@@ -20,9 +20,11 @@
       </div>
       <h1 class="sub-title">World's leading <span>Hashpower marketplace</span></h1>
       <h3 class="mini-desc">connect your miners and earn Bitcoin for every share</h3>
+      <RouterLink to="/signup" v-if="!user"><button class="btn-regular">Join Us</button></RouterLink>
+      
     </div>
 
-    <div class="user-tools-container">
+    <div class="user-tools-container full">
       <div class="user-tool-wrapper flex column">
         <img src="https://www.nicehash.com/assets/7c25d3fe987f02cb18c4.png" alt="">
         <h2 class="user-tool-desc sub-title">
@@ -48,6 +50,7 @@
 <script>  
   import {userService} from '../services/userService'
   import {bitcoinService} from '../services/bitCoinService'
+  // import '../assets/styles/setup/mixins'
   export default {
     data() {
             return {
@@ -58,11 +61,16 @@
     methods: {
     },
     computed:{
-
+      // descriptionBtn(){
+      //   if(this.user) return ""
+      //   else return "Join Us"
+      // }
     },
     async created(){
-      this.user = userService.getUser()
-      this.bitcoins = await bitcoinService.getRate(this.user.balance)
+      if(userService.getUser()){
+        this.user = await userService.getUser()
+        this.bitcoins = await bitcoinService.getRate(this.user?.balance)
+      }
     },
     
 }
@@ -137,6 +145,7 @@
       font-size: 24px;
       line-height: 24px;
       text-align: center;
+      margin-bottom: 30px;
   }
   .user-tools-container{
     display: grid;
@@ -148,6 +157,7 @@
       padding: 48px 32px 0px;
       justify-content: center;
       align-items: center;
+      height: 100%;
       img{
         width: 20em;
         height: 220px;
@@ -171,6 +181,16 @@
       }
     }
   }
+  @media screen and (max-width: 800px) {
+  .user-tools-container{
+    display: flex;
+    flex-direction: column;
+  }
 }
+}
+
+// @include for-mobile-layout {
+
+// }
 
 </style>
