@@ -20,16 +20,23 @@
                 <button class="back"><img src="../assets/img/back.png" alt=""></button>
             </RouterLink>
         </div>
+
+        <TransferFund :contact="contact" :user="user"/>
+        <MoveList :contact="contact" :user="user"/>
     </section>
     <img v-else src="../assets/img/puff.svg" alt="" class="loader">
 </template>
 
 <script>
 import { contactService } from '../services/contactService'
+import TransferFund from '../cmps/TransferFund.vue'
+import MoveList from '../cmps/MoveList.vue'
+import { userService } from '../services/userService'
 export default {
     data() {
         return {
             contact: null,
+            user: userService.getUser(),
         }
     },
     computed: {
@@ -38,7 +45,11 @@ export default {
     async created() {
         const contactId = this.$route.params.id
         this.contact = this.contacts.find(contact=>contact._id === contactId)
-    }
+    } ,
+    components: {
+        TransferFund,
+        MoveList
+}
    
 }
 </script>
