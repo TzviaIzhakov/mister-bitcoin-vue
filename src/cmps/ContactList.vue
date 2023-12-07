@@ -39,9 +39,7 @@ export default {
     margin-block-start: 10px;
     list-style: none;
     padding: 0;
-}
-
-.contact-list li {
+    li{
     display: grid;
     padding: 10px;
     border: 1px solid lightgray;
@@ -62,8 +60,12 @@ export default {
             font-size: 1em;
        }
     }
-  
+    }
+   
+
 }
+
+
 .list-move, /* apply transition to moving elements */
 .list-enter-active,
 .list-leave-active {

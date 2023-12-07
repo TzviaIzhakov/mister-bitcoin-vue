@@ -1,6 +1,6 @@
 <template>
 	<section v-if="contact" class="contact-edit-container">
-		<h2>{{ displayTitle }} Your Deatils</h2>
+		<h2>{{ displayTitle }}</h2>
 		<form class="contact-edit" @submit.prevent="onSave">
 			<label for="name">Name</label>
 			<input type="text" id="name" v-model="contact.name"/>
@@ -114,6 +114,13 @@ export default {
       
         
     }
+	@media screen and (max-width: 600px) {
+		.contact-edit{
+			input{
+				width: auto;
+			}
+		}
+	}
 }
 	
 
