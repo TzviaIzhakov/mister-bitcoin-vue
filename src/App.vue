@@ -13,7 +13,6 @@ import UserMsg from './cmps/UserMsg.vue';
   <main class="main-layout full">
     <RouterView/>
   </main>
-  <AppFooter/>
 </template>
 
 <style scoped>
