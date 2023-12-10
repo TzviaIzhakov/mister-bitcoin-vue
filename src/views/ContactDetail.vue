@@ -1,30 +1,31 @@
 <template>
-    <section v-if="contact" class="contact-details">
-        <div class="flex username">
-            <img src="../assets/img/users.png" alt="">
-            <h2>{{contact.name}}</h2>
-        </div>
-        <div class="contact-phone-wrapper flex">
-            <label>phone</label>
-            <span class="contact-phone">{{contact.phone}}</span>
-        </div>
-        <div class="contact-phone-wrapper flex">
-            <label>email</label>
-            <p>{{contact.email}}</p>
-        </div>
-        
-        <div class="actions">
-            <RouterLink :to="`/contact/edit/${contact._id}`"><button class="edit"><img src="../assets/img/edit.png" alt=""></button>
-            </RouterLink>
-            <RouterLink to="/contact">
-                <button class="back"><img src="../assets/img/back.png" alt=""></button>
-            </RouterLink>
-        </div>
-
-        <TransferFund :contact="contact" :user="user"/>
-        <MoveList :contact="contact" :user="user"/>
+    <section class="contact-details-wrapper">
+        <section v-if="contact" class="contact-details">
+            <div class="flex username">
+                <img src="../assets/img/users.png" alt="">
+                <h2>{{contact.name}}</h2>
+            </div>
+            <div class="contact-phone-wrapper flex">
+                <label>phone</label>
+                <span class="contact-phone">{{contact.phone}}</span>
+            </div>
+            <div class="contact-phone-wrapper flex">
+                <label>email</label>
+                <p>{{contact.email}}</p>
+            </div>
+            <div class="actions">
+                <RouterLink :to="`/contact/edit/${contact._id}`"><button class="edit"><img src="../assets/img/edit.png" alt=""></button>
+                </RouterLink>
+                <RouterLink to="/contact">
+                    <button class="back"><img src="../assets/img/back.png" alt=""></button>
+                </RouterLink>
+            </div>
+        </section>
+        <section class="transfer-actions">
+            <TransferFund :contact="contact" :user="user"/>
+        </section>
     </section>
-    <img v-else src="../assets/img/puff.svg" alt="" class="loader">
+    <MoveList :contact="contact" :user="user"/>
 </template>
 
 <script>
@@ -55,7 +56,17 @@ export default {
 </script>
 
 <style lang="scss">
-.contact-details {
+.contact-details-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    @media screen and (max-width: 800px) {
+		display: flex;
+        flex-direction: column;
+        input{
+            width: 100%;
+        }
+	}
+    .contact-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,5 +108,12 @@ export default {
                 right: 10px;
             }
 		}
+      
 }
+.transfer-actions{
+    justify-self: center;
+    align-self: center;
+}
+}
+
 </style>

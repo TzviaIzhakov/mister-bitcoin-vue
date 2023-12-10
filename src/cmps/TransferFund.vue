@@ -1,9 +1,9 @@
 <template>
     <section class="transfer-fund-container" v-if="user">
+        <h1>Transfer Coins</h1>
         <form class="transfer-fund"  @submit.prevent="onAddMove">
-            <label for="">Transfer Coins</label>
             <input type="number" v-model="amount">
-            <button>Transfer</button>
+            <button class="btn-regular">Transfer</button>
         </form>
     </section>
 </template>
@@ -38,5 +38,29 @@
 </script>
 
 <style lang="scss">
-
+.transfer-fund-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 43px;
+    h1{
+        font-size: 30px;
+        font-weight: 700;
+        color: orange;
+        margin-bottom: 45px;
+    }
+.transfer-fund{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    overflow: hidden;
+    padding: 50px;
+    border: 1px solid lightgray;
+    button{
+        align-self: center;
+    }
+}
+}
 </style>

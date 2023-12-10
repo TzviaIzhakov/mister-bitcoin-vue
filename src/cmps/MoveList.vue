@@ -45,5 +45,22 @@ import MovePreview from './MovePreview.vue';
 </script>
 
 <style lang="scss">
-
+.move-list-container{
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    h1{
+        font-size: 30px;
+        font-weight: 700;
+        color: orange;
+        margin-bottom: 45px;
+    }
+    .move-list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 41px;
+        list-style: none;
+    }
+}
 </style>

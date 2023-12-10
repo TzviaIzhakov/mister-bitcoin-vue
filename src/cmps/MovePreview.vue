@@ -19,5 +19,9 @@
 </script>
 
 <style lang="scss">
-
+.move-preview{
+    span{
+        font-weight: 700;
+    }
+}
 </style>
